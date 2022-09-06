@@ -315,8 +315,10 @@ if __name__ == '__main__':
 
             from_path = sync.get_module_dir(module[1], cfg['from'])
             to_path = sync.get_module_dir(module[1], cfg['to'])
-            force_update = option == 6
-            cfg['fn'](from_path, to_path, force_update)
+            if option == 6:
+                cfg['fn'](from_path, to_path, True)
+            else:
+                cfg['fn'](from_path, to_path)
         elif option == 3:
             sync.new_module() 
         elif option == 4:
